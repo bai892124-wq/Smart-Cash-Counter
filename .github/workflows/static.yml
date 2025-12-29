@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Cash Counter 2025 - Bhagirath Goswami</title>
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg: #121212;
+            --card: #1e1e1e;
+            --text: #ffffff;
+            --accent: #00ff88;
+        }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .container { background: var(--card); padding: 25px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); width: 100%; max-width: 450px; border: 1px solid #333; }
+        
+        .header-title { text-align: center; margin-bottom: 15px; color: #fff; font-size: 18px; opacity: 0.8; }
+        .header-title span { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
+        
+        h2 { text-align: center; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; font-size: 28px; margin-top: 5px; }
+        
+        .row { display: flex; align-items: center; margin-bottom: 15px; background: #2a2a2a; padding: 12px; border-radius: 15px; transition: 0.3s; border: 1px solid transparent; }
+        .row:hover { border-color: var(--primary); transform: scale(1.02); }
+        
+        .note-img { width: 80px; height: 40px; object-fit: cover; border-radius: 5px; margin-right: 15px; background: #333; border: 1px solid #444; }
+        
+        .label { width: 50px; font-weight: bold; color: var(--primary); font-size: 16px; }
+        input { width: 80px; padding: 10px; border: none; border-radius: 10px; background: #3d3d3d; color: white; text-align: center; font-size: 18px; outline: none; }
+        input:focus { box-shadow: 0 0 10px var(--primary); background: #444; }
+
+        .subtotal-box { flex-grow: 1; text-align: right; color: var(--accent); font-weight: bold; font-size: 18px; }
+
+        .total-section { margin-top: 25px; padding: 25px; background: linear-gradient(135deg, var(--secondary), var(--primary)); border-radius: 20px; text-align: center; box-shadow: 0 10px 20px rgba(0,210,255,0.3); }
+        #grand-total { font-size: 32px; display: block; font-weight: 800; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        #in-words { font-size: 13px; margin-top: 10px; opacity: 0.9; text-transform: capitalize; font-style: italic; min-height: 20px; }
+
+        .buttons { display: flex; gap: 10px; margin-top: 25px; }
+        button { flex: 1; padding: 12px; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .btn-reset { background: #ff4b2b; color: white; }
+        .btn-share { background: #25d366; color: white; }
+        button:active { transform: scale(0.95); }
+
+        /* App Download Button Styling */
+        .app-download-box { margin-top: 25px; padding-top: 20px; border-top: 1px dashed #444; text-align: center; }
+        .btn-app { display: inline-flex; align-items: center; gap: 10px; background: #ffffff10; color: var(--primary); text-decoration: none; padding: 12px 20px; border-radius: 15px; border: 1px solid var(--primary); font-weight: bold; transition: 0.3s; width: 80%; justify-content: center; }
+        .btn-app:hover { background: var(--primary); color: #000; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-title">Welcome, <span>Bhagirath Goswami</span></div>
+    
+    <h2>🚀 Smart Cash Counter</h2>
+
+    <div id="cash-rows">
+        <div class="row"><img src="note500.jpg" class="note-img" alt="500"><span class="label">₹500</span><input type="number" class="qty" data-unit="500" placeholder="0"><span class="subtotal-box">₹<span class="subtotal">0</span></span></div>
+        <div class="row"><img src="note200.jpg" class="note-img" alt="200"><span class="label">₹200</span><input type="number" class="qty" data-unit="200" placeholder="0"><span class="subtotal-box">₹<span class="subtotal">0</span></span></div>
+        <div class="row"><img src="note100.jpg" class="note-img" alt="100"><span class="label">₹100</span><input type="number" class="qty" data-unit="100" placeholder="0"><span class="subtotal-box">₹<span class="subtotal">0</span></span></div>
+        <div class="row"><img src="note50.jpg" class="note-img" alt="50"><span class="label">₹50</span><input type="number" class="qty" data-unit="50" placeholder="0"><span class="subtotal-box">₹<span class="subtotal">0</span></span></div>
+        <div class="row"><img src="note20.jpg" class="note-img" alt="20"><span class="label">₹20</span><input type="number" class="qty" data-unit="20" placeholder="0"><span class="subtotal-box">₹<span class="subtotal">0</span></span></div>
+        <div class="row"><img src="note10.jpg" class="note-img" alt="10"><span class="label">₹10</span><input type="number" class="qty" data-unit="10" placeholder="0"><span class="subtotal-box">₹<span class="subtotal">0</span></span></div>
+    </div>
+
+    <div class="total-section">
+        <small>कुल राशि (Total Amount)</small>
+        <span id="grand-total">₹ 0</span>
+        <div id="in-words">Zero Rupees Only</div>
+    </div>
+
+    <div class="buttons">
+        <button class="btn-reset" onclick="reset()">🗑️ Clear</button>
+        <button class="btn-share" onclick="share()">💬 WhatsApp</button>
+    </div>
+
+    <div class="app-download-box">
+        <a href="https://www.mediafire.com/file/h2tnelexwwg89ob/Smart_Cash_Counter.apk/file" target="_blank" class="btn-app">
+            <span>🤖</span> Download Android App
+        </a>
+    </div>
+</div>
+
+<script>
+    const inputs = document.querySelectorAll('.qty');
+    const grandTotalDisplay = document.getElementById('grand-total');
+    const inWordsDisplay = document.getElementById('in-words');
+
+    // Number to Indian Words Function
+    function numberToWords(num) {
+        if (num === 0) return 'Zero Rupees Only';
+        const a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+        const b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+        const format = (n) => {
+            if (n < 20) return a[n];
+            if (n < 100) return b[Math.floor(n / 10)] + (n % 10 !== 0 ? ' ' + a[n % 10] : '');
+            if (n < 1000) return a[Math.floor(n / 100)] + 'Hundred ' + (n % 100 !== 0 ? 'and ' + format(n % 100) : '');
+            return '';
+        };
+        let words = '';
+        words += num >= 10000000 ? format(Math.floor(num / 10000000)) + 'Crore ' : '';
+        num %= 10000000;
+        words += num >= 100000 ? format(Math.floor(num / 100000)) + 'Lakh ' : '';
+        num %= 100000;
+        words += num >= 1000 ? format(Math.floor(num / 1000)) + 'Thousand ' : '';
+        num %= 1000;
+        words += format(num);
+        return words.trim() + ' Rupees Only';
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', updateTotals);
+    });
+
+    function updateTotals() {
+        let grandTotal = 0;
+        inputs.forEach(input => {
+            const unit = parseInt(input.getAttribute('data-unit'));
+            const count = parseInt(input.value) || 0;
+            const rowSubtotal = unit * count;
+            input.parentElement.querySelector('.subtotal').innerText = rowSubtotal.toLocaleString('en-IN');
+            grandTotal += rowSubtotal;
+        });
+
+        grandTotalDisplay.innerText = "₹ " + grandTotal.toLocaleString('en-IN');
+        inWordsDisplay.innerText = numberToWords(grandTotal);
+    }
+
+    function reset() {
+        if(confirm("क्या आप सारा डाटा साफ करना चाहते हैं?")) {
+            inputs.forEach(i => { i.value = ""; i.parentElement.querySelector('.subtotal').innerText = "0"; });
+            grandTotalDisplay.innerText = "₹ 0";
+            inWordsDisplay.innerText = "Zero Rupees Only";
+        }
+    }
+
+    function share() {
+        let text = "📊 *CASH COUNT REPORT (2025)*\n";
+        text += "━━━━━━━━━━━━━━\n";
+        let hasData = false;
+        inputs.forEach(input => {
+            if(input.value > 0) {
+                let unit = input.getAttribute('data-unit');
+                let sub = parseInt(unit) * input.value;
+                text += `💸 ₹${unit} x ${input.value} = *₹${sub.toLocaleString('en-IN')}*\n`;
+                hasData = true;
+            }
+        });
+        
+        if(!hasData) return alert("कृपया पहले संख्या भरें!");
+
+        text += `━━━━━━━━━━━━━━\n💰 *Total: ${grandTotalDisplay.innerText}*\n`;
+        text += `🗣️ _${inWordsDisplay.innerText}_\n`;
+        text += `━━━━━━━━━━━━━━\nReported by: *Bhagirath Goswami*`;
+        
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+    }
+</script>
+
+</body>
+</html>
+
